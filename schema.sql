@@ -1,10 +1,10 @@
-DROP DATABASE IF EXISTS test;
+DROP DATABASE IF EXISTS app;
 
-CREATE DATABASE test;
+CREATE DATABASE app;
 
-USE test;
+USE app;
 
-CREATE TABLE items (
+CREATE TABLE shows (
   id int NOT NULL AUTO_INCREMENT,
   quantity integer NOT NULL,
   description varchar(50) NOT NULL,
