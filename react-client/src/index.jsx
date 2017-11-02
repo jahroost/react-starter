@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import List from './components/List.jsx';
 import exampleData from './data/exampleData';
+import exampleDataOld from './data/exampleDataOld';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       shows: exampleData
+      // oldShows: exampleData.oldVideo
     }
   }
 
@@ -28,8 +30,7 @@ class App extends React.Component {
 
   render () {
     return (<div>
-      <h1>Shows</h1>
-      <List shows={this.state.shows}/>
+      <List shows={this.state}/>
     </div>)
   }
 }

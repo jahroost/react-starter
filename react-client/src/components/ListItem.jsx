@@ -1,8 +1,12 @@
 import React from 'react';
 
 const ListItem = (props) => (
-  <div className="showTitle">
-    { props.show.title }
+  console.log(props.show.show),
+  <div>
+    <div className="showTitle">
+      { props.show.show.currVideo.title }
+    </div>
+    
   </div>
 )
 
