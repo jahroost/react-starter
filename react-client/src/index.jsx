@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import List from './components/List.jsx';
 import ListOld from './components/ListOld.jsx';
+import Search from './components/Search.jsx';
 import exampleData from './data/exampleData';
 import exampleDataOld from './data/exampleDataOld';
 
@@ -14,10 +15,20 @@ class App extends React.Component {
       shows: exampleData,
       oldShows: exampleDataOld
     }
-    this.addVideo = () => {
-      console.log('this was clicked');
-      this.shows.push(newShow)
-    }
+  }
+  addShow() {
+    var showsCopy = this.state.shows
+    showsCopy.finished = 0
+    this.setState({
+      show: showsCopy
+    })
+  }
+  finishedShow(index) {
+    var showsCopy = this.state.shows
+    showsCopy[index].finished = 1
+    this.setState({
+      show: showsCopy
+    })
   }
 
 
@@ -27,7 +38,8 @@ class App extends React.Component {
       success: (data) => {
         console.log('insex.jsx data: ', data);
         this.setState({
-          shows: data
+          shows: data,
+          finished: data.finished
         })
       },
       error: (err) => {
@@ -39,12 +51,14 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        <form className="addShow">
+        {/* <form className="addShow">
           <input newShow={this.state.inputValue} type="text"></input>
           <input onClick={this.addVideo} type="submit"></input>
-        </form>
-        <List shows={this.state.shows}/>
-        <ListOld oldShows={this.state.oldShows}/>
+        </form> */}
+        {/* {this.state.shows.filter(newShow => newShow.finished === 3).map(newShow => <Search newShow={newShow} addShow={() => this.addShow()}/>)} */}
+        <Search />
+        <List shows={this.state.shows} finishedShow={this.finishedShow.bind(this)}/>
+        <ListOld oldShows={this.state.shows}/>
     </div>)
   }
 }
