@@ -5,7 +5,7 @@ const List = (props) => (
   console.log('props.shows: ', props),
   <div className="currentlyWatching">
     <h4> Currently Watching </h4>
-    { props.shows.filter(show => show.finished === 0).map((show, i) => <ListItem show={show} finishedShow={() => props.finishedShow(i)}/>)}
+    { props.shows.filter(show => show.status === 'watching').map((show, i) => <ListItem key={show.id} show={show} finishedShow={() => props.finishedShow(i)}/>)}
   </div>
 )
 

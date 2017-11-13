@@ -18,14 +18,14 @@ class App extends React.Component {
   }
   addShow() {
     var showsCopy = this.state.shows
-    showsCopy.finished = 0
+    showsCopy.status = 'watching'
     this.setState({
       show: showsCopy
     })
   }
   finishedShow(index) {
     var showsCopy = this.state.shows
-    showsCopy[index].finished = 1
+    showsCopy[index].status = 'watched'
     this.setState({
       show: showsCopy
     })
@@ -39,7 +39,7 @@ class App extends React.Component {
         console.log('insex.jsx data: ', data);
         this.setState({
           shows: data,
-          finished: data.finished
+          status: data.status
         })
       },
       error: (err) => {
